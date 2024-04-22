@@ -1,0 +1,6 @@
+.Vue-Toastification__toast--error,
+.Vue-Toastification__toast--sucess {
+  background-color: gray;
+  border: 1px solid black;
+  font-size: 15px;
+}
