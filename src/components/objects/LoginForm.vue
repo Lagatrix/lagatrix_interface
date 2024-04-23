@@ -43,7 +43,7 @@ async function handleSubmit() {
 
     if (typeof res === 'string') {
       ploc.saveSession(session)
-      window.location.href = '/'
+      window.location.href = '/lagatrix'
     }
   }
 }

@@ -1,9 +1,7 @@
 <template>
-  <!--<Suspense>
-    <TestPloc />
-      <template #fallback><p>Loading</p></template>
-    </Suspense>-->
-  <RouterView />
+  <div class="min-h-screen bg-light-white">
+    <RouterView />
+  </div>
 </template>
 
 <script setup lang="ts">

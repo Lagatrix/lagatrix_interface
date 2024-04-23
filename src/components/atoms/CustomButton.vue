@@ -4,7 +4,7 @@
     :type="type"
     :disabled="disabled"
   >
-    <span v-if="disabled && type === 'submit'">Loading...</span>
+    <i class="loading loading-spinner" v-if="disabled && type === 'submit'" />
     <span v-else>{{ text }}</span>
   </button>
 </template>
