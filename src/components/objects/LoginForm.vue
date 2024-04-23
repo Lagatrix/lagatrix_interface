@@ -9,13 +9,19 @@
     </div>
     <CustomInput id="username" class="w-full" v-model="username" label="Username" />
     <CustomInput id="password" class="w-full" type="password" v-model="password" label="Password" />
-    <CustomButton :disabled="ploc.isSending()" class="w-48" text="Sign Up" type="submit" />
+    <CustomButton
+      :disabled="formActive"
+      :isLoading="ploc.isSending()"
+      class="w-48"
+      text="Sign Up"
+      type="submit"
+    />
   </form>
 </template>
 <script lang="ts" setup>
 import CustomInput from '@/components/atoms/CustomInput.vue'
 import CustomButton from '@/components/atoms/CustomButton.vue'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { LoginPloc } from '@/plocs/LoginPloc'
 import { useToast } from 'vue-toastification'
 import { ActionTexts } from '@/core/shared/domain/entities/ActionsText'
@@ -30,21 +36,23 @@ const port = ref('')
 const username = ref('')
 const password = ref('')
 
+const formActive = computed(() => {
+  return !endpoint.value || !port.value || !username.value || !password.value
+})
+
 async function handleSubmit() {
-  if (endpoint.value && port.value && username.value && password.value) {
-    const session = {
-      apiUrl: endpoint.value,
-      port: port.value,
-      user: username.value,
-      password: password.value
-    }
+  const session = {
+    apiUrl: endpoint.value,
+    port: port.value,
+    user: username.value,
+    password: password.value
+  }
 
-    const res = await ploc.makeLogin(session)
+  const res = await ploc.makeLogin(session)
 
-    if (typeof res === 'string') {
-      ploc.saveSession(session)
-      window.location.href = '/lagatrix'
-    }
+  if (typeof res === 'string') {
+    ploc.saveSession(session)
+    window.location.href = '/lagatrix'
   }
 }
 </script>

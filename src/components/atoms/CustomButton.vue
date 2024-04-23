@@ -2,9 +2,9 @@
   <button
     class="btn bg-middle-gray rounded-badge text-low-black hover:bg-low-gray border-none disabled:bg-low-gray disabled:text-low-black disabled:cursor-not-allowed"
     :type="type"
-    :disabled="disabled"
+    :disabled="disabled || isLoading"
   >
-    <i class="loading loading-spinner" v-if="disabled && type === 'submit'" />
+    <i class="loading loading-spinner" v-if="isLoading" />
     <span v-else>{{ text }}</span>
   </button>
 </template>
@@ -20,6 +20,10 @@ defineProps({
     default: 'button'
   },
   disabled: {
+    type: Boolean,
+    default: false
+  },
+  isLoading: {
     type: Boolean,
     default: false
   }
