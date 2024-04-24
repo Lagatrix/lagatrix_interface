@@ -19,9 +19,11 @@
   </nav>
 </template>
 <script lang="ts" setup>
+import { useRoute } from 'vue-router';
 import CustomButton from '../atoms/CustomButton.vue'
 import { ref } from 'vue'
 
+const route = useRoute()
 const links = [
   { to: '/lagatrix/monitoring', text: 'Monitoring' },
   { to: '/lagatrix/storage', text: 'Storage' },
@@ -30,7 +32,9 @@ const links = [
   { to: '/lagatrix/events', text: 'Events' }
 ]
 
-const selectedLink = ref(links[0].to)
+const selectedLink = ref(
+  links.find((link) => link.to === route.path)?.to ?? links[0].to
+)
 
 const selectLink = (link: string) => {
   selectedLink.value = link
