@@ -3,9 +3,9 @@ import type { Gpu } from '@/core/hardware/gpu/domain/entities/Gpu'
 import type { ActionTexts } from '@/core/shared/domain/entities/ActionsText'
 import { container } from '@/core/hardware/gpu/di'
 import { useToast } from 'vue-toastification'
-import { HardwarePloc } from './HardwarePloc'
 import { GetGpuUseUseCase } from '@/core/hardware/gpu/application/GetGpuUseUseCase'
 import { GetGpuTemperatureUseCase } from '@/core/hardware/gpu/application/GetGpuTemperatureUseCase'
+import { HardwarePloc } from './HardwarePloc'
 
 export class GpuPloc extends HardwarePloc<Gpu> {
   private getGpuUseCase: GetGpuUseCase
@@ -20,7 +20,7 @@ export class GpuPloc extends HardwarePloc<Gpu> {
     this.getGpuTemperatureUseCase = container.resolve(GetGpuTemperatureUseCase)
   }
 
-  async getGpu(): Promise<Gpu | Error> {
+  async getProcessor(): Promise<Gpu | Error> {
     return this.get(this.getGpuUseCase.execute())
   }
 
@@ -29,6 +29,6 @@ export class GpuPloc extends HardwarePloc<Gpu> {
   }
 
   async getTemperature(): Promise<number | Error> {
-    return this.getDynamicRecurse(this.getGpuUseUseCase.execute())
+    return this.getDynamicRecurse(this.getGpuTemperatureUseCase.execute())
   }
 }

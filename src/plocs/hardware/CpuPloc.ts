@@ -3,9 +3,9 @@ import type { Cpu } from '@/core/hardware/cpu/domain/entities/Cpu'
 import type { ActionTexts } from '@/core/shared/domain/entities/ActionsText'
 import { container } from '@/core/hardware/cpu/di'
 import { useToast } from 'vue-toastification'
-import { HardwarePloc } from './HardwarePloc'
 import { GetCpuUseUseCase } from '@/core/hardware/cpu/application/GetCpuUseUseCase'
 import { GetCpuTemperatureUseCase } from '@/core/hardware/cpu/application/GetCpuTemperatureUseCase'
+import { HardwarePloc } from './HardwarePloc'
 
 export class CpuPloc extends HardwarePloc<Cpu> {
   private getCpuUseCase: GetCpuUseCase
@@ -20,7 +20,7 @@ export class CpuPloc extends HardwarePloc<Cpu> {
     this.getCpuTemperatureUseCase = container.resolve(GetCpuTemperatureUseCase)
   }
 
-  async getCpu(): Promise<Cpu | Error> {
+  async getProcessor(): Promise<Cpu | Error> {
     return this.get(this.getCpuUseCase.execute())
   }
 

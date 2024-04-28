@@ -3,6 +3,7 @@
     class="btn bg-middle-gray rounded-badge text-low-black hover:bg-low-gray border-none disabled:bg-low-gray disabled:text-low-black disabled:cursor-not-allowed"
     :type="type"
     :disabled="disabled || isLoading"
+    v-on:click="click"
   >
     <i class="loading loading-spinner" v-if="isLoading" />
     <span v-else>{{ text }}</span>
@@ -28,4 +29,11 @@ defineProps({
     default: false
   }
 })
+
+
+const emits = defineEmits(['click'])
+
+const click = () => {
+  emits('click')
+}
 </script>

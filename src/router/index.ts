@@ -8,7 +8,7 @@ import GroupsView from '@/views/GroupsView.vue'
 import EventsView from '@/views/EventsView.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
   routes: [
     {
       path: '/',
@@ -36,7 +36,7 @@ const router = createRouter({
         },
         {
           name: 'groups',
-          path: '/lagatrix/users',
+          path: '/lagatrix/groups',
           component: GroupsView
         },
         {
@@ -50,11 +50,12 @@ const router = createRouter({
       name: 'login',
       path: '/login',
       component: LoginView
-    }
+    },
+    { path: '/:catchAll(.*)', redirect: '/404' }
   ]
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _from, next) => {
   const valuesCookies = ['apiUrl', 'port', 'user', 'password']
 
   const hasAllValues = valuesCookies.every((value) => Cookies.get(value))

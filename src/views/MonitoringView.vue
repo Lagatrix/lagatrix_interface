@@ -1,9 +1,37 @@
 <template>
-  <div class="min-h-screen flex bg-light-white">
-    <MenuFrame />
-    <router-view></router-view>
-  </div>
+  <Suspense>
+    <div class="flex flex-col justify-center w-full">
+      <div class="flex lg:flex-row flex-col lg:justify-evenly items-center w-full p-4">
+        <CpuSection class="w-full max-w-lg m-6" :ploc="cpuPloc" />
+        <RamSection class="w-full max-w-lg m-6" :ploc="ramPloc" />
+      </div>
+      <div class="flex lg:flex-row flex-col lg:justify-evenly items-center w-full p-4">
+        <GpuSection class="w-full max-w-lg m-6" :ploc="gpuPloc" />
+        <OsSection class="w-full max-w-lg m-6" :ploc="hostPloc" />
+      </div>
+    </div>
+    <template #fallback>
+      <span
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 loading loading-bars loading-lg bg-low-black"
+      ></span>
+    </template>
+  </Suspense>
 </template>
 <script lang="ts" setup>
-import MenuFrame from '@/components/objects/MenuFrame.vue'
+import CpuSection from '@/components/molecules/monitoring/sections/CpuSection.vue'
+import GpuSection from '@/components/molecules/monitoring/sections/GpuSection.vue'
+import RamSection from '@/components/molecules/monitoring/sections/RamSection.vue'
+import OsSection from '@/components/molecules/monitoring/sections/OsSection.vue'
+import { CpuPloc } from '@/plocs/hardware/CpuPloc'
+import { GpuPloc } from '@/plocs/hardware/GpuPloc'
+import { RamPloc } from '@/plocs/hardware/RamPloc'
+import { useToast } from 'vue-toastification'
+import { HostPloc } from '@/plocs/HostPloc'
+
+const toast = useToast()
+
+const cpuPloc = new CpuPloc({getErrorText: "Can't get the CPU"}, toast)
+const gpuPloc = new GpuPloc({getErrorText: "Can't get the GPU"}, toast)
+const ramPloc = new RamPloc({getErrorText: "Can't get the RAM módules"}, toast)
+const hostPloc = new HostPloc({getErrorText: "Can't get the Host information"}, toast)
 </script>

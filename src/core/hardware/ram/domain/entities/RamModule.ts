@@ -1,9 +1,9 @@
 export interface RamModule {
   size: string
   locator: string
-  bankLocator: string
-  memoryType: string
+  bank_locator: string
+  memory_type: string
   manufacturer: string
-  partNumber: string
-  configuredMemorySpeed: string
+  part_number: string
+  configured_memory_speed: string
 }

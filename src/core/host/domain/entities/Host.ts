@@ -1,8 +1,8 @@
 export interface Host {
-  distributionCompleteName: string
-  distributionFamily: string
-  distributionName: string
-  distributionVersion: string
+  distribution_complete_name: string
+  distribution_family: string
+  distribution_name: string
+  distribution_version: string
   hostname: string
   kernel: string
 }

@@ -1,3 +1,5 @@
+import { RamUse } from "../entities/RamUse";
+
 export interface GetRamUseService {
-  get(): Promise<number>
+  get(): Promise<RamUse>
 }

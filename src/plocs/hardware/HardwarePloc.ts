@@ -7,7 +7,7 @@ export abstract class HardwarePloc<T> extends PlocBase<T> {
     super(actionsText, toast)
   }
 
-  async getDynamicRecurse(promise: Promise<number>): Promise<number | Error> {
+  protected async getDynamicRecurse<K>(promise: Promise<K>): Promise<K | Error> {
     try {
       return await promise
     } catch (error) {

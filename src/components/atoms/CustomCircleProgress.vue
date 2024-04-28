@@ -1,6 +1,6 @@
 <template>
   <div class="circle-progress">
-    <svg :width="150" :height="150" viewBox="0 0 100 100">
+    <svg :width="190" :height="190" viewBox="0 0 100 100">
       <circle
         class="circle-bg"
         :cx="center"
@@ -41,6 +41,16 @@
       >
         {{ progress }}{{ typeValue }}
       </text>
+      <text
+        fill="#6c757dff"
+        font-size="10"
+        x="50%"
+        y="75%"
+        dominant-baseline="middle"
+        text-anchor="middle"
+      >
+        {{ subText }}
+      </text>
     </svg>
   </div>
 </template>
@@ -48,20 +58,15 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-const props = defineProps({
-  progress: {
-    type: Number,
-    required: true
-  },
-  typeText: {
-    type: String,
-    required: true
-  },
-  typeValue: {
-    type: String,
-    default: '%'
-  }
-})
+const props = withDefaults(
+  defineProps<{
+    progress: number
+    typeText: string
+    typeValue?: string
+    subText?: string
+  }>(),
+  { typeValue: '%', subText: '' }
+)
 
 const radius = computed(() => 50 - 10 / 2)
 const center = computed(() => 100 / 2)
