@@ -30,8 +30,8 @@ import CustomCircleProgress from '@/components/atoms/CustomCircleProgress.vue'
 import { RamPloc } from '@/plocs/hardware/RamPloc'
 import { ref } from 'vue'
 import { RamModule } from '@/core/hardware/ram/domain/entities/RamModule'
-import { RamSizeTransformator } from '@/core/utils/size/RamSizeTransformator'
-import RamModuleSection from '@/components/molecules/monitoring/RamModuleSection.vue'
+import { SizeTransformator } from '@/utils/size/SizeTransformator'
+import RamModuleSection from '@/components/atoms/monitoring/RamModuleSection.vue'
 import CustomDialog from '@/components/molecules/CustomModal.vue'
 
 const props = defineProps<{
@@ -45,7 +45,7 @@ const use = ref({
 const ramModules: RamModule[] | Error = await props.ploc.getRam()
 const size = await props.ploc.getUse()
 
-const ramSizeTransformator: RamSizeTransformator = new RamSizeTransformator(
+const ramSizeTransformator: SizeTransformator = new SizeTransformator(
   !(size instanceof Error) ? size.size : 0
 )
 
@@ -54,6 +54,6 @@ setInterval(async () => {
   const data = !(resoult instanceof Error) ? resoult.use : 0
 
   use.value.usePercentage = ramSizeTransformator.getUseInPercentage(data)
-  use.value.useInStorageUnit = RamSizeTransformator.sizeWithStorageUnit(data)
+  use.value.useInStorageUnit = SizeTransformator.sizeWithStorageUnit(data)
 }, 4000)
 </script>

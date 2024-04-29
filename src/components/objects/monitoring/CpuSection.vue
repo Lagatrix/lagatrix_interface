@@ -21,7 +21,7 @@ import { CpuPloc } from '@/plocs/hardware/CpuPloc'
 import TuxIcon from '@/components/icons/os/TuxIcon.vue'
 import IntelLogo from '@/components/icons/brands/IntelLogo.vue'
 import AmdLogo from '@/components/icons/brands/AmdLogo.vue'
-import ComponentInformation from '../ComponentInformation.vue'
+import ComponentInformation from '@/components/atoms/monitoring/ComponentInformation.vue'
 import CustomDialog from '@/components/molecules/CustomModal.vue'
 
 const props = defineProps<{

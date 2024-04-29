@@ -18,10 +18,10 @@
   </Suspense>
 </template>
 <script lang="ts" setup>
-import CpuSection from '@/components/molecules/monitoring/sections/CpuSection.vue'
-import GpuSection from '@/components/molecules/monitoring/sections/GpuSection.vue'
-import RamSection from '@/components/molecules/monitoring/sections/RamSection.vue'
-import OsSection from '@/components/molecules/monitoring/sections/OsSection.vue'
+import CpuSection from '@/components/objects/monitoring/CpuSection.vue'
+import GpuSection from '@/components/objects/monitoring/GpuSection.vue'
+import RamSection from '@/components/objects/monitoring/RamSection.vue'
+import OsSection from '@/components/objects/monitoring/OsSection.vue'
 import { CpuPloc } from '@/plocs/hardware/CpuPloc'
 import { GpuPloc } from '@/plocs/hardware/GpuPloc'
 import { RamPloc } from '@/plocs/hardware/RamPloc'

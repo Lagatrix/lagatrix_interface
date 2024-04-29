@@ -15,7 +15,7 @@ import { HostPloc } from '@/plocs/HostPloc'
 import { computed, ref } from 'vue'
 import DebianIcon from '@/components/icons/os/DebianIcon.vue'
 import TuxIcon from '@/components/icons/os/TuxIcon.vue'
-import ComponentInformation from '../ComponentInformation.vue'
+import ComponentInformation from '@/components/atoms/monitoring/ComponentInformation.vue'
 import CustomDialog from '@/components/molecules/CustomModal.vue'
 
 const props = defineProps<{
