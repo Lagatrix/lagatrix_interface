@@ -45,15 +45,15 @@ const use = ref({
 const ramModules: RamModule[] | Error = await props.ploc.getRam()
 const size = await props.ploc.getUse()
 
-const ramSizeTransformator: SizeTransformator = new SizeTransformator(
-  !(size instanceof Error) ? size.size : 0
-)
-
 setInterval(async () => {
   const resoult = await props.ploc.getUse()
   const data = !(resoult instanceof Error) ? resoult.use : 0
+  const ramSizeTransformator: SizeTransformator = new SizeTransformator(
+    !(size instanceof Error) ? size.size : 0,
+    data
+  )
 
-  use.value.usePercentage = ramSizeTransformator.getUseInPercentage(data)
+  use.value.usePercentage = ramSizeTransformator.getUseInPercentage()
   use.value.useInStorageUnit = SizeTransformator.sizeWithStorageUnit(data)
 }, 4000)
 </script>

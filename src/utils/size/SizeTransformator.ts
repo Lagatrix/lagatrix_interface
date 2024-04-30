@@ -1,12 +1,25 @@
 export class SizeTransformator {
   protected totalSizeInBytes: number
+  protected useInBytes: number
 
-  constructor(totalSizeInBytes: number) {
+  constructor(totalSizeInBytes: number, useInBytes: number) {
     this.totalSizeInBytes = totalSizeInBytes
+    this.useInBytes = useInBytes
   }
 
-  public getUseInPercentage(useInBytes: number): number {
-    return Math.floor((useInBytes / this.totalSizeInBytes) * 100)
+  public getUseInPercentage(): number {
+    return Math.floor((this.useInBytes / this.totalSizeInBytes) * 100)
+  }
+
+  public getSizeInPercentage(): string {
+    const usePercentage = this.getUseInPercentage()
+    let number = Math.round(usePercentage)
+
+    if (number < 10) {
+      number = 10
+    }
+
+    return `${number}%`;
   }
 
   public static sizeWithStorageUnit(size: number): string {
