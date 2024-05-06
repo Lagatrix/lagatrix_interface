@@ -8,5 +8,5 @@
   </div>
 </template>
 <script lang="ts" setup>
-import LoginForm from '@/components/objects/LoginForm.vue'
+import LoginForm from '@/components/molecules/forms/LoginForm.vue'
 </script>

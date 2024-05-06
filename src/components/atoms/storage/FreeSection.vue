@@ -10,9 +10,8 @@
 import { defineProps } from 'vue'
 import { SizeTransformator } from '@/utils/size/SizeTransformator'
 
-const props = defineProps<{
+defineProps<{
   diskSize: number
   freeSize: number
 }>()
-const divWidth = new SizeTransformator(props.diskSize, props.freeSize).getSizeInPercentage()
 </script>

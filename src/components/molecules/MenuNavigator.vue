@@ -6,7 +6,7 @@
         v-for="link in links"
         :key="link.to"
         :class="{ 'bg-light-white': link.to === selectedLink }"
-        class="mt-5 p-1 w-64 rounded-l-full"
+        class="mt-5 p-1 w-64 rounded-l-full text-middle-gray"
         @click="selectLink(link.to)"
       >
         <router-link :to="link.to" class="flex items-center">

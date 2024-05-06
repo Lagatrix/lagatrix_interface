@@ -1,8 +1,8 @@
 <template>
-  <dialog :id="id" class="modal">
+  <dialog :id="id" class="modal h-auto w-auto">
     <CustomFrame :title="title" header-color="bg-light-black" class="w-auto h-auto">
       <slot></slot>
-      <div class="modal-action">
+      <div v-if="close" class="modal-action">
         <form method="dialog" class="flex flex-row justify-center w-full">
           <CustomButton class="w-28 m-1" text="Close" type="submit" />
         </form>
@@ -20,10 +20,10 @@ withDefaults(
   defineProps<{
     title: string
     id: string
-    actionText?: string | null
+    close: boolean
   }>(),
   {
-    actionText: null
+    close: true
   }
 )
 </script>

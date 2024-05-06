@@ -6,6 +6,6 @@ import type { DeleteUserService } from '../domain/services/DeleteUserService'
 
 export class ApiDeleteUserInfraestructure extends ApiInfraestructure implements DeleteUserService {
   async delete(username: string): Promise<void> {
-    new ResourceClient<User>(this.session, Endpoints.USER).delete(username)
+    return new ResourceClient<User>(this.session, Endpoints.USER).delete(username)
   }
 }

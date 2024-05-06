@@ -1,6 +1,5 @@
 import { GetCpuUseCase } from '@/core/hardware/cpu/application/GetCpuUseCase'
 import type { Cpu } from '@/core/hardware/cpu/domain/entities/Cpu'
-import type { ActionTexts } from '@/core/shared/domain/entities/ActionsText'
 import { container } from '@/core/hardware/cpu/di'
 import { useToast } from 'vue-toastification'
 import { GetCpuUseUseCase } from '@/core/hardware/cpu/application/GetCpuUseUseCase'
@@ -12,8 +11,8 @@ export class CpuPloc extends HardwarePloc<Cpu> {
   private getCpuUseUseCase: GetCpuUseUseCase
   private getCpuTemperatureUseCase: GetCpuTemperatureUseCase
 
-  constructor(actionsText: ActionTexts, toast: ReturnType<typeof useToast>) {
-    super(actionsText, toast)
+  constructor(toast: ReturnType<typeof useToast>) {
+    super(toast)
 
     this.getCpuUseCase = container.resolve(GetCpuUseCase)
     this.getCpuUseUseCase = container.resolve(GetCpuUseUseCase)

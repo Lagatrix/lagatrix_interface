@@ -6,6 +6,6 @@ export class DeleteUserUseCase {
   constructor(@inject('DeleteUserService') private deleteUserService: DeleteUserService) {}
 
   async execute(username: string): Promise<void> {
-    await this.deleteUserService.delete(username)
+    return this.deleteUserService.delete(username)
   }
 }

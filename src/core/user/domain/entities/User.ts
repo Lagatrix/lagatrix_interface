@@ -1,8 +1,8 @@
 export interface User {
-  uid: number
+  uid?: number
   name: string
   shell: string
   home: string
-  mainGroup: string
-  password: string
+  main_group?: string
+  password?: string
 }

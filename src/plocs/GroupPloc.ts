@@ -3,7 +3,6 @@ import { SaveGroupUseCase } from '@/core/group/application/SaveGroupUseCase'
 import { UpdateGroupUseCase } from '@/core/group/application/UpdateGroupUseCase'
 import { container } from '@/core/group/di'
 import { PlocBase } from './PlocBase'
-import type { ActionTexts } from '@/core/shared/domain/entities/ActionsText'
 import type { useToast } from 'vue-toastification'
 import type { Group } from '@/core/group/domain/entities/Group'
 import { GetGroupsUseCase } from '@/core/group/application/GetGroupsUseCase'
@@ -14,8 +13,8 @@ export class GroupPloc extends PlocBase<Group> {
   private updateGroupUseCase: UpdateGroupUseCase
   private deleteGroupUseCase: DeleteGroupUseCase
 
-  constructor(actionsText: ActionTexts, toast: ReturnType<typeof useToast>) {
-    super(actionsText, toast)
+  constructor(toast: ReturnType<typeof useToast>) {
+    super(toast)
 
     this.getGroupsUseCase = container.resolve(GetGroupsUseCase)
     this.saveGroupUseCase = container.resolve(SaveGroupUseCase)

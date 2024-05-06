@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-light-white">
+  <div class="min-h-screen flex flex-col bg-light-white overflow-y-hidden">
     <div v-if="isNotLoginPage" >
       <MenuFrame />
     </div>

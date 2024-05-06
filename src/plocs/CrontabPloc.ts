@@ -5,7 +5,6 @@ import { UpdateCronJobUseCase } from '@/core/crontab/application/UpdateCronJobUs
 import { container } from '@/core/crontab/di'
 import type { CronJob } from '@/core/crontab/domain/entities/CronJob'
 import { PlocBase } from './PlocBase'
-import type { ActionTexts } from '@/core/shared/domain/entities/ActionsText'
 import type { useToast } from 'vue-toastification'
 
 export class CrontabPloc extends PlocBase<CronJob> {
@@ -14,8 +13,8 @@ export class CrontabPloc extends PlocBase<CronJob> {
   private updateCronJobUseCase: UpdateCronJobUseCase
   private deleteCronJobsUseCase: DeleteCronJobsUseCase
 
-  constructor(actionsText: ActionTexts, toast: ReturnType<typeof useToast>) {
-    super(actionsText, toast)
+  constructor(toast: ReturnType<typeof useToast>) {
+    super(toast)
 
     this.getCronJobsUseCase = container.resolve(GetCronJobsUseCase)
     this.saveCronJobsUseCase = container.resolve(SaveCronJobsUseCase)

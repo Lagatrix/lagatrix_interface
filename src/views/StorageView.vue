@@ -11,10 +11,10 @@
 <script lang="ts" setup>
 import { StoragePloc } from '@/plocs/StoragePloc'
 import { useToast } from 'vue-toastification'
-import DiskList from '@/components/objects/storage/DiskList.vue'
+import DiskList from '@/components/objects/lists/DiskList.vue'
 
 
 const toast = useToast()
 
-const storagePloc = new StoragePloc({ getErrorText: "Can't get the Storage" }, toast)
+const storagePloc = new StoragePloc(toast)
 </script>

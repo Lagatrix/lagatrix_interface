@@ -30,8 +30,8 @@ import { HostPloc } from '@/plocs/HostPloc'
 
 const toast = useToast()
 
-const cpuPloc = new CpuPloc({getErrorText: "Can't get the CPU"}, toast)
-const gpuPloc = new GpuPloc({getErrorText: "Can't get the GPU"}, toast)
-const ramPloc = new RamPloc({getErrorText: "Can't get the RAM módules"}, toast)
-const hostPloc = new HostPloc({getErrorText: "Can't get the Host information"}, toast)
+const cpuPloc = new CpuPloc(toast)
+const gpuPloc = new GpuPloc(toast)
+const ramPloc = new RamPloc(toast)
+const hostPloc = new HostPloc(toast)
 </script>

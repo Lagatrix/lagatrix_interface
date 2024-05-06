@@ -1,6 +1,5 @@
 import { GetRamUseCase } from '@/core/hardware/ram/application/GetRamUseCase'
 import type { RamModule } from '@/core/hardware/ram/domain/entities/RamModule'
-import type { ActionTexts } from '@/core/shared/domain/entities/ActionsText'
 import { container } from '@/core/hardware/ram/di'
 import { useToast } from 'vue-toastification'
 import { HardwarePloc } from './HardwarePloc'
@@ -11,8 +10,8 @@ export class RamPloc extends HardwarePloc<RamModule> {
   private getRamUseCase: GetRamUseCase
   private getRamUseUseCase: GetRamUseUseCase
 
-  constructor(actionsText: ActionTexts, toast: ReturnType<typeof useToast>) {
-    super(actionsText, toast)
+  constructor(toast: ReturnType<typeof useToast>) {
+    super(toast)
 
     this.getRamUseCase = container.resolve(GetRamUseCase)
     this.getRamUseUseCase = container.resolve(GetRamUseUseCase)

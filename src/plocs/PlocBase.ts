@@ -1,16 +1,16 @@
 import { POSITION, useToast } from 'vue-toastification'
-import type { ActionTexts } from '@/core/shared/domain/entities/ActionsText'
 import { NetworkError } from '@/core/shared/domain/errors/NetworkError'
 import { Ref, ref } from 'vue'
 
 export class PlocBase<T> {
   private toast: ReturnType<typeof useToast>
-  private actionsText: ActionTexts
   private sending: Ref<boolean>
+  protected updateSucessText: string = "Update sucess"
+  protected createSucessText: string = "Create sucess"
+  protected deleteSucessText: string = "Delete sucess"
 
-  constructor(actionsText: ActionTexts, toast: ReturnType<typeof useToast>) {
+  constructor(toast: ReturnType<typeof useToast>) {
     this.toast = toast
-    this.actionsText = actionsText
     this.sending = ref(false)
   }
 
@@ -21,7 +21,7 @@ export class PlocBase<T> {
   protected async gets(promise: Promise<T[]>): Promise<T[] | Error> {
     this.sending.value = true
     try {
-      return await Promise.resolve<T[]>(promise)
+      return (await Promise.resolve<T[]>(promise)).reverse()
     } catch (error) {
       this.manageError(error)
 
@@ -48,7 +48,7 @@ export class PlocBase<T> {
     try {
       const resolved = await Promise.resolve<T>(promise)
 
-      this.seeToastSucess(this.actionsText.updateSucessText!)
+      this.seeToastSucess(this.updateSucessText)
 
       return resolved
     } catch (error) {
@@ -62,7 +62,7 @@ export class PlocBase<T> {
     try {
       const resolved = await Promise.resolve<T>(promise)
 
-      this.seeToastSucess(this.actionsText.createSucessText!)
+      this.seeToastSucess(this.createSucessText)
 
       return resolved
     } catch (error) {
@@ -76,7 +76,7 @@ export class PlocBase<T> {
     try {
       await Promise.resolve<void>(promise)
 
-      this.seeToastSucess(this.actionsText.deleteSucessText!)
+      this.seeToastSucess(this.deleteSucessText)
 
       return true
     } catch (error) {
@@ -89,34 +89,31 @@ export class PlocBase<T> {
   protected manageError(error: unknown): void {
     if (error instanceof Error) {
       if (error instanceof NetworkError) {
-        this.seeToastError('this.actionsText.getErrorText!', error.message)
+        this.seeToastError(error.message)
         window.location.href = '/login'
       } else {
-        this.seeToastError(this.actionsText.getErrorText!, error.message)
+        this.seeToastError(error.message)
       }
     }
   }
 
   private seeToastSucess(shortErrorDescription: string): void {
-    this.toast.error(shortErrorDescription, {
+    this.toast.info(shortErrorDescription, {
       position: POSITION.BOTTOM_RIGHT,
-      timeout: 50000,
+      timeout: 5000,
       showCloseButtonOnHover: false,
       hideProgressBar: true,
       closeOnClick: false
     })
   }
 
-  private seeToastError(shortErrorDescription: string, longErrorDescription: string): void {
-    this.toast.error(shortErrorDescription, {
+  private seeToastError(errorDescription: string): void {
+    this.toast.error(errorDescription, {
       position: POSITION.BOTTOM_RIGHT,
-      timeout: 50000,
+      timeout: 5000,
       showCloseButtonOnHover: false,
       hideProgressBar: true,
       closeOnClick: false,
-      onClick: () => {
-        console.log(longErrorDescription)
-      }
     })
   }
 }

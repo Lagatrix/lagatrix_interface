@@ -24,29 +24,33 @@ import CustomButton from '@/components/atoms/CustomButton.vue'
 import { computed, ref } from 'vue'
 import { LoginPloc } from '@/plocs/LoginPloc'
 import { useToast } from 'vue-toastification'
-import { ActionTexts } from '@/core/shared/domain/entities/ActionsText'
+import { SessionLagatrix } from '@/core/shared/domain/entities/SessionLagatrix'
 
 const ploc = new LoginPloc(
-  { getErrorText: 'The user or password are incorrect' } as ActionTexts,
   useToast()
 )
 
 const endpoint = ref('')
-const port = ref('')
+const port = ref(8000)
 const username = ref('')
 const password = ref('')
 
 const formActive = computed(() => {
-  return !endpoint.value || !port.value || !username.value || !password.value
+  return (
+    username.value != '' &&
+    port.value > 0 &&
+    port.value < 65536 &&
+    !new RegExp('^(http://|https://).+$', 'i').test(endpoint.value)
+  )
 })
 
 async function handleSubmit() {
   const session = {
     apiUrl: endpoint.value,
-    port: port.value,
+    port: `${port.value}`,
     user: username.value,
     password: password.value
-  }
+  } as SessionLagatrix
 
   const res = await ploc.makeLogin(session)
 

@@ -1,6 +1,5 @@
 import { GetGpuUseCase } from '@/core/hardware/gpu/application/GetGpuUseCase'
 import type { Gpu } from '@/core/hardware/gpu/domain/entities/Gpu'
-import type { ActionTexts } from '@/core/shared/domain/entities/ActionsText'
 import { container } from '@/core/hardware/gpu/di'
 import { useToast } from 'vue-toastification'
 import { GetGpuUseUseCase } from '@/core/hardware/gpu/application/GetGpuUseUseCase'
@@ -12,8 +11,8 @@ export class GpuPloc extends HardwarePloc<Gpu> {
   private getGpuUseUseCase: GetGpuUseUseCase
   private getGpuTemperatureUseCase: GetGpuTemperatureUseCase
 
-  constructor(actionsText: ActionTexts, toast: ReturnType<typeof useToast>) {
-    super(actionsText, toast)
+  constructor(toast: ReturnType<typeof useToast>) {
+    super(toast)
 
     this.getGpuUseCase = container.resolve(GetGpuUseCase)
     this.getGpuUseUseCase = container.resolve(GetGpuUseUseCase)

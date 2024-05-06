@@ -93,13 +93,13 @@ export class ResourceClient<T> {
         url: `${this.lagatrixSession.apiUrl}:${this.lagatrixSession.port}/${this.resourceName}/${deleteResource}`,
         headers: this.getAuthHeaders()
       })
+    } else {
+      await this.makeRequest<T>({
+        method: 'DELETE',
+        url: `${this.lagatrixSession.apiUrl}:${this.lagatrixSession.port}/${this.resourceName}`,
+        data: deleteResource,
+        headers: this.getAuthHeaders()
+      })
     }
-
-    await this.makeRequest<T>({
-      method: 'DELETE',
-      url: `${this.lagatrixSession.apiUrl}:${this.lagatrixSession.port}/${this.resourceName}`,
-      data: deleteResource,
-      headers: this.getAuthHeaders()
-    })
   }
 }

@@ -1,6 +1,5 @@
 import { GetLoginUseCase } from '@/core/login/application/GetLoginUseCase'
 import { PlocBase } from './PlocBase'
-import type { ActionTexts } from '@/core/shared/domain/entities/ActionsText'
 import { container } from '@/core/login/di'
 import { useToast } from 'vue-toastification'
 import type { SessionLagatrix } from '@/core/shared/domain/entities/SessionLagatrix'
@@ -9,8 +8,8 @@ import Cookies from 'js-cookie'
 export class LoginPloc extends PlocBase<string> {
   private getLoginUseCase: GetLoginUseCase
 
-  constructor(actionsText: ActionTexts, toast: ReturnType<typeof useToast>) {
-    super(actionsText, toast)
+  constructor(toast: ReturnType<typeof useToast>) {
+    super(toast)
 
     this.getLoginUseCase = container.resolve(GetLoginUseCase)
   }
