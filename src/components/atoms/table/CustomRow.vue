@@ -2,11 +2,11 @@
   <tr>
     <template v-for="data in object" :key="data">
       <td v-if="data !== null" class="p-3 text-low-black text-lg">
-        {{ data }}
+        {{ getData(data) }}
       </td>
     </template>
     <td class="p-3 text-low-black text-lg flex flex-row justify-evenly">
-      <span class="cursor-pointer"  @click="emits('edit', object)" onclick="modifyModal.showModal()">
+      <span class="cursor-pointer" @click="emits('edit', object)" onclick="modifyModal.showModal()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -22,7 +22,11 @@
           />
         </svg>
       </span>
-      <span class="cursor-pointer" @click="emits('delete', object)" onclick="deleteModal.showModal()">
+      <span
+        class="cursor-pointer"
+        @click="emits('delete', object)"
+        onclick="deleteModal.showModal()"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -43,8 +47,21 @@
 </template>
 
 <script setup lang="ts">
+import { markRaw } from 'vue'
+
 const emits = defineEmits(['edit', 'delete'])
+
 defineProps<{
   object: Object
 }>()
+
+const getData = (data: any) => {
+  if (Array.isArray(data)) {
+    const dataLength = data.length
+
+    return dataLength
+  } else {
+    return data
+  }
+}
 </script>

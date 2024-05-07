@@ -27,14 +27,17 @@ export class GroupPloc extends PlocBase<Group> {
   }
 
   async saveGroup(group: Group): Promise<Group | Error> {
+    this.createSucessText = `Group ${group.name} created`
     return this.save(this.saveGroupUseCase.execute(group))
   }
 
   async updateGroup(groupname: string, groupData: Group): Promise<Group | Error> {
+    this.updateSucessText = `Group ${groupname} changed`
     return this.update(this.updateGroupUseCase.execute(groupname, groupData))
   }
 
-  async deleteGroup(groupname: string): Promise<boolean | Error> {
+  async deleteGroup(groupname: string): Promise<boolean> {
+    this.deleteSucessText = `Group ${groupname} deleted`
     return this.delete(this.deleteGroupUseCase.execute(groupname))
   }
 }

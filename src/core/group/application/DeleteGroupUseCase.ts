@@ -6,6 +6,6 @@ export class DeleteGroupUseCase {
   constructor(@inject('DeleteGroupService') private deleteGroupService: DeleteGroupService) {}
 
   async execute(groupName: string): Promise<void> {
-    await this.deleteGroupService.delete(groupName)
+    return await this.deleteGroupService.delete(groupName)
   }
 }

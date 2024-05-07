@@ -1,9 +1,9 @@
 <template>
-  <div class="h-20 bg-middle-black w-screen">
+  <div class="h-20 bg-middle-black w-screen z-10">
     <label
       id="tham"
       for="menu"
-      class="tham tham-e-squeeze tham-w-12 drawer-button absolute z-10 top-5 left-3"
+      class="tham tham-e-squeeze tham-w-12 drawer-button absolute z-20 top-5 left-3"
       :class="{ 'tham-active': toggleActive }"
       @click="toggleTham"
     >

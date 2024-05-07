@@ -1,4 +1,5 @@
 <template>
+  <MenuFrame />
   <Suspense>
     <div class="flex flex-col justify-center w-full">
       <div class="flex lg:flex-row flex-col lg:justify-evenly items-center w-full p-4">
@@ -27,6 +28,7 @@ import { GpuPloc } from '@/plocs/hardware/GpuPloc'
 import { RamPloc } from '@/plocs/hardware/RamPloc'
 import { useToast } from 'vue-toastification'
 import { HostPloc } from '@/plocs/HostPloc'
+import MenuFrame from '@/components/objects/MenuFrame.vue'
 
 const toast = useToast()
 

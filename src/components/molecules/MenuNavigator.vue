@@ -9,8 +9,8 @@
         class="mt-5 p-1 w-64 rounded-l-full text-middle-gray"
         @click="selectLink(link.to)"
       >
-        <router-link :to="link.to" class="flex items-center">
-          <span class="w-44">{{ link.text }}</span>
+        <router-link :to="link.to" exact class="flex items-center">
+          <span class="w-44 drawer-overlay" for="menu">{{ link.text }}</span>
         </router-link>
       </li>
     </ul>

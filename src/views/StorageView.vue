@@ -1,4 +1,5 @@
 <template>
+  <MenuFrame />
   <Suspense>
     <DiskList :ploc="storagePloc" />
     <template #fallback>
@@ -12,6 +13,7 @@
 import { StoragePloc } from '@/plocs/StoragePloc'
 import { useToast } from 'vue-toastification'
 import DiskList from '@/components/objects/lists/DiskList.vue'
+import MenuFrame from '@/components/objects/MenuFrame.vue'
 
 
 const toast = useToast()

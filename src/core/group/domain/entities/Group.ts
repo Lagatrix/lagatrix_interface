@@ -1,5 +1,5 @@
 export interface Group {
-  gid: number
+  gid?: number
   name: string
-  users: string[]
+  users?: string[]
 }

@@ -1,4 +1,5 @@
 <template>
+  <MenuFrame />
   <Suspense>
     <UserList :ploc="userPloc" />
     <template #fallback>
@@ -12,6 +13,7 @@
 import UserList from '@/components/objects/lists/UserList.vue'
 import { UserPloc } from '@/plocs/UserPloc'
 import { useToast } from 'vue-toastification'
+import MenuFrame from '@/components/objects/MenuFrame.vue'
 
 const toast = useToast()
 

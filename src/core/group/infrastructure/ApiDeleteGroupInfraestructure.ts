@@ -8,6 +8,6 @@ export class ApiDeleteGroupInfraestructure
   implements DeleteGroupService
 {
   async delete(groupName: string): Promise<void> {
-    await new ResourceClient<void>(this.session, Endpoints.GROUP).delete(groupName)
+    return await new ResourceClient<void>(this.session, Endpoints.GROUP).delete(groupName)
   }
 }

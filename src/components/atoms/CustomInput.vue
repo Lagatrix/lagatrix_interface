@@ -1,6 +1,6 @@
 <template>
   <div>
-    <label for="inputField" class="text-xs text-low-gray">
+    <label :for="id" class="text-xs text-low-gray">
       {{ label }}
     </label>
     <input
@@ -14,25 +14,14 @@
 </template>
 
 <script lang="ts" setup>
-defineProps({
-  id: {
-    type: String,
-    default: ''
-  },
-  label: {
-    type: String,
-    default: ''
-  },
-  modelValue: {
-    type: [String, Number],
-    default: ''
-  },
-  type: {
-    type: String,
-    default: 'text'
-  }
+withDefaults(defineProps<{
+  id: string
+  label: string
+  type?: string
+  modelValue: string
+}>(), {
+  type: 'text'
 })
-
 const emit = defineEmits(['update:modelValue'])
 
 const updateInput = (event: Event) => {
