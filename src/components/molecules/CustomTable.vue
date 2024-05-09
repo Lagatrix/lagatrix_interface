@@ -8,7 +8,7 @@
         class="even:bg-low-white"
         :object="object"
         v-for="(object, index) in objects"
-        :key="index"
+        v-bind:key="index"
         @edit="emitEdit"
         @delete="emitDelete"
       />

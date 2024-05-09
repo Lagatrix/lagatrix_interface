@@ -1,7 +1,8 @@
 <template>
   <tr>
-    <template v-for="data in object" :key="data">
-      <td v-if="data !== null" class="p-3 text-low-black text-lg">
+    <!-- eslint-disable-next-line -->
+    <template v-for="(data, index) in object">
+      <td v-if="data !== null" :key="index" class="p-3 text-low-black text-lg">
         {{ getData(data) }}
       </td>
     </template>
@@ -54,6 +55,7 @@ defineProps<{
 }>()
 
 const getData = (data: any) => {
+  console.log(data)
   if (Array.isArray(data)) {
     const dataLength = data.length
 

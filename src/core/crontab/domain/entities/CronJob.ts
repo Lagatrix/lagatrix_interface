@@ -1,8 +1,8 @@
 export interface CronJob {
+  command: string
   minute: string
   hour: string
-  dayOfMonth: string
+  day_of_month: string
   month: string
-  dayOfWeek: string
-  command: string
+  day_of_week: string
 }

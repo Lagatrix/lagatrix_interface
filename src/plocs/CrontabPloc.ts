@@ -34,7 +34,7 @@ export class CrontabPloc extends PlocBase<CronJob> {
     return this.update(this.updateCronJobUseCase.execute(oldCronJob, newCronJob))
   }
 
-  async deleteCronJobs(cronJob: CronJob): Promise<boolean> {
+  async deleteCronJob(cronJob: CronJob): Promise<boolean> {
     return this.delete(this.deleteCronJobsUseCase.execute(cronJob))
   }
 }

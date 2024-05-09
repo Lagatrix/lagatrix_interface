@@ -15,7 +15,7 @@
       </li>
     </ul>
 
-    <CustomButton text="Logout" class="w-2/4 mt-8" />
+    <CustomButton text="Logout" @click="logout" class="w-2/4 mt-8" />
   </nav>
 </template>
 <script lang="ts" setup>
@@ -38,5 +38,9 @@ const selectedLink = ref(
 
 const selectLink = (link: string) => {
   selectedLink.value = link
+}
+
+const logout = () => {
+  window.location.href = '/login'
 }
 </script>

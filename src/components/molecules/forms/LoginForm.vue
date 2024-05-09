@@ -30,6 +30,8 @@ const ploc = new LoginPloc(
   useToast()
 )
 
+ploc.clearSession()
+
 const endpoint = ref('')
 const port = ref(8000)
 const username = ref('')

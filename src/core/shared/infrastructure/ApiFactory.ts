@@ -77,11 +77,10 @@ export class ResourceClient<T> {
         headers: this.getAuthHeaders()
       })
     }
-
     return await this.makeRequest<T>({
       method: 'PUT',
       url: `${this.lagatrixSession.apiUrl}:${this.lagatrixSession.port}/${this.resourceName}`,
-      data: [oldResource, updatedResource],
+      data: {old_cron_job: oldResource, new_cron_job: updatedResource},
       headers: this.getAuthHeaders()
     })
   }
