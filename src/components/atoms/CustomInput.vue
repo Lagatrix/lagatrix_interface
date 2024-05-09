@@ -18,7 +18,7 @@ withDefaults(defineProps<{
   id: string
   label: string
   type?: string
-  modelValue: string
+  modelValue: string | number | undefined
 }>(), {
   type: 'text'
 })

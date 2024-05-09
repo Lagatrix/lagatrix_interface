@@ -46,8 +46,9 @@ const props = withDefaults(
 
 const reactiveUserList = ref(props.group.users)
 
-watch(() => props.group.users, (newUsers) => {
-    reactiveUserList.value = newUsers
+watch(() => {
+  reactiveUserList.value = [...(props.group.users ?? [])];
+}, () => {
 });
 
 const changeGroup = computed(() => {
@@ -56,8 +57,10 @@ const changeGroup = computed(() => {
 
 const handleSubmit = () => {
 
-  if (changeGroup.value.users!.length < 1) {
+  if ((reactiveUserList.value ?? []).length < 1) {
     changeGroup.value.users = undefined
+  } else {
+    changeGroup.value.users = [...(reactiveUserList.value ?? [])];
   }
 
   if (props.newGroup) {

@@ -47,8 +47,6 @@
 </template>
 
 <script setup lang="ts">
-import { markRaw } from 'vue'
-
 const emits = defineEmits(['edit', 'delete'])
 
 defineProps<{
