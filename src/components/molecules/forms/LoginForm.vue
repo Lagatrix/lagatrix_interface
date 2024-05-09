@@ -37,9 +37,9 @@ const password = ref('')
 
 const formActive = computed(() => {
   return (
-    username.value != '' &&
-    port.value > 0 &&
-    port.value < 65536 &&
+    username.value == '' ||
+    (port.value < 0 ||
+    port.value > 65536) ||
     !new RegExp('^(http://|https://).+$', 'i').test(endpoint.value)
   )
 })
