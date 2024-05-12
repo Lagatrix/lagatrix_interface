@@ -55,7 +55,6 @@ defineProps<{
 }>()
 
 const getData = (data: any) => {
-  console.log(data)
   if (Array.isArray(data)) {
     const dataLength = data.length
 

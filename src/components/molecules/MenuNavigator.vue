@@ -22,6 +22,7 @@
 import { useRoute } from 'vue-router';
 import CustomButton from '../atoms/CustomButton.vue'
 import { ref } from 'vue'
+import router from '@/router';
 
 const route = useRoute()
 const links = [
@@ -41,6 +42,6 @@ const selectLink = (link: string) => {
 }
 
 const logout = () => {
-  window.location.href = '/login'
+  router.push('/login')
 }
 </script>

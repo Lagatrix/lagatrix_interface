@@ -21,27 +21,27 @@ const router = createRouter({
       children: [
         {
           name: 'monitoring',
-          path: '/lagatrix/monitoring',
+          path: 'monitoring',
           component: MonitoringView
         },
         {
           name: 'storage',
-          path: '/lagatrix/storage',
+          path: 'storage',
           component: StorageView
         },
         {
           name: 'users',
-          path: '/lagatrix/users',
+          path: 'users',
           component: UsersView
         },
         {
           name: 'groups',
-          path: '/lagatrix/groups',
+          path: 'groups',
           component: GroupsView
         },
         {
           name: 'events',
-          path: '/lagatrix/events',
+          path: 'events',
           component: EventsView
         }
       ]

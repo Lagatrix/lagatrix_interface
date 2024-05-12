@@ -25,6 +25,7 @@ import { computed, ref } from 'vue'
 import { LoginPloc } from '@/plocs/LoginPloc'
 import { useToast } from 'vue-toastification'
 import { SessionLagatrix } from '@/core/shared/domain/entities/SessionLagatrix'
+import router from '@/router'
 
 const ploc = new LoginPloc(
   useToast()
@@ -33,7 +34,7 @@ const ploc = new LoginPloc(
 ploc.clearSession()
 
 const endpoint = ref('')
-const port = ref(8000)
+const port = ref(8443)
 const username = ref('')
 const password = ref('')
 
@@ -58,7 +59,7 @@ async function handleSubmit() {
 
   if (typeof res === 'string') {
     ploc.saveSession(session)
-    window.location.href = '/lagatrix'
+    router.push('/')
   }
 }
 </script>

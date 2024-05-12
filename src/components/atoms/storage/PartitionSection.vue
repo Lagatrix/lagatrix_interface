@@ -17,7 +17,6 @@ const props = defineProps<{
 }>()
 
 const divWidth = new SizeTransformator(props.diskSize, props.partition.size_in_bytes).getSizeInPercentage()
-console.log(divWidth)
 const infoMap = new Map<string, string>([
   ['Name', props.partition.name],
   ['Type', props.partition.type_format],

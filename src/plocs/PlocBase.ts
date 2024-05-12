@@ -89,8 +89,7 @@ export class PlocBase<T> {
   protected manageError(error: unknown): void {
     if (error instanceof Error) {
       if (error instanceof NetworkError) {
-        this.seeToastError(error.message)
-        window.location.href = '/login'
+        this.seeToastError("Error when try to connect to server")
       } else {
         this.seeToastError(error.message)
       }

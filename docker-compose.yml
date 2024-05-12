@@ -1,0 +1,7 @@
+services:
+  lagatrix-interface:
+    image: lagatrix-interface
+    container_name: lagatrix-interface
+    build: ./
+    ports:
+      - 7443:7443
