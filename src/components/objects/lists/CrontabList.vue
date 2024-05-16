@@ -13,13 +13,13 @@
       @delete="selectDeleteCronJob"
       class="w-full"
     />
-    <CustomModal title="Add user" id="addModal" :close="false">
+    <CustomModal title="Add event" id="addModal" :close="false">
       <CrontabForm :cron="emptyCron" :newEvent="true" @addCronJob="addCronJob" />
     </CustomModal>
-    <CustomModal title="Modify user" id="modifyModal" :close="false">
+    <CustomModal title="Modify event" id="modifyModal" :close="false">
       <CrontabForm :cron="selectedCronJob!" @updateCronJob="updateCronJob" />
     </CustomModal>
-    <CustomModal title="Delete user" id="deleteModal" :close="false">
+    <CustomModal title="Delete event" id="deleteModal" :close="false">
       <DeleteForm @delete="deleteCronJob" :text="deleteText" />
     </CustomModal>
   </div>
@@ -50,9 +50,8 @@ const addCronJob = async (cronJob: CronJob) => {
   const newCronJob = await props.ploc.saveCronJob(cronJob)
 
   if (!(newCronJob instanceof Error) && Array.isArray(cronJobs.value)) {
-    cronJobs.value.unshift(cronJob)
+    cronJobs.value.unshift(newCronJob)
   }
-  console.log(cronJobs.value)
 }
 
 const updateCronJob = async (cronJob: CronJob) => {
