@@ -84,6 +84,6 @@ setInterval(async () => {
 setInterval(async () => {
   let data = await props.ploc.getUse()
 
-  use.value = Number.isInteger(data) ? (data as number) : 0
+  use.value = data instanceof Error ? 0 : data
 }, 4000)
 </script>
